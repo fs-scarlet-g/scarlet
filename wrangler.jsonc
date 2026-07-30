@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "scarlet-guardian",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-07-29",
+  "compatibility_flags": ["nodejs_compat"],
+  "account_id": "ac8c2578aeccae5fce1a75e0b4e47ca0",
+  "workers_dev": true,
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "scarlet-guardian",
+      "database_id": "088a74ab-5563-45af-8c1b-ae8dbef3b5c9"
+    }
+  ]
+}

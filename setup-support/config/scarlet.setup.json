@@ -1,0 +1,49 @@
+﻿{
+    "meta":  {
+                 "appId":  "",
+                 "instagramBusinessAccountId":  "",
+                 "accessTokenStoredAsWranglerSecret":  false
+             },
+    "project":  {
+                    "siteName":  "Scarlet Guardian",
+                    "domain":  "scarlet.fortunestudios.jp",
+                    "workerName":  "scarlet-guardian",
+                    "repositoryName":  "scarlet-guardian-site"
+                },
+    "legal":  {
+                  "operatorName":  "蜷臥伐 蜍ｲ"
+              },
+    "line":  {
+                 "channelAccessTokenStoredAsWranglerSecret":  false,
+                 "channelSecretStoredAsWranglerSecret":  false
+             },
+    "cloudflare":  {
+                       "d1DatabaseName":  "scarlet-guardian",
+                       "accountId":  "ac8c2578aeccae5fce1a75e0b4e47ca0",
+                       "parentDomainManagedExternally":  true,
+                       "parentAccountId":  "cfda786a82241adf6b21f772dbc87544",
+                       "parentProxyWorkerName":  "scarlet-parent-proxy",
+                       "parentProxyRoute":  "scarlet.fortunestudios.jp/*",
+                       "parentDnsRecord":  "A scarlet 192.0.2.1 proxied",
+                       "subdomainOnly":  true,
+                       "workerUrl":  "https://scarlet-guardian.fs-scarlet-g.workers.dev",
+                       "d1DatabaseId":  "088a74ab-5563-45af-8c1b-ae8dbef3b5c9"
+                   },
+    "accounts":  {
+                     "googleEmail":  "fs.scarlet.g@gmail.com",
+                     "lineOfficialAccountName":  "",
+                     "instagramUsername":  "",
+                     "githubOwner":  ""
+                 },
+    "analytics":  {
+                      "clarityProjectId":  "",
+                      "ga4MeasurementId":  "",
+                      "searchConsoleVerified":  false
+                  },
+    "openai":  {
+                   "apiKeyStoredAsWranglerSecret":  false
+               },
+    "booking":  {
+                    "bookingUrl":  ""
+                }
+}

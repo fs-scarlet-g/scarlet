@@ -1,0 +1,43 @@
+{
+  "project": {
+    "siteName": "Scarlet Guardian",
+    "workerName": "scarlet-guardian",
+    "domain": "scarlet.fortunestudios.jp",
+    "repositoryName": "scarlet-guardian-site"
+  },
+  "accounts": {
+    "googleEmail": "",
+    "githubOwner": "",
+    "instagramUsername": "",
+    "lineOfficialAccountName": ""
+  },
+  "cloudflare": {
+    "accountId": "",
+    "d1DatabaseName": "scarlet-guardian",
+    "d1DatabaseId": "",
+    "workerUrl": ""
+  },
+  "openai": {
+    "apiKeyStoredAsWranglerSecret": false
+  },
+  "meta": {
+    "appId": "",
+    "instagramBusinessAccountId": "",
+    "accessTokenStoredAsWranglerSecret": false
+  },
+  "line": {
+    "channelSecretStoredAsWranglerSecret": false,
+    "channelAccessTokenStoredAsWranglerSecret": false
+  },
+  "booking": {
+    "bookingUrl": ""
+  },
+  "legal": {
+    "operatorName": "吉田 勲"
+  },
+  "analytics": {
+    "ga4MeasurementId": "",
+    "searchConsoleVerified": false,
+    "clarityProjectId": ""
+  }
+}

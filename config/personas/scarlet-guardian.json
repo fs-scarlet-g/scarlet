@@ -1,0 +1,27 @@
+{
+  "id": "scarlet-guardian",
+  "name": "Scarlet Guardian",
+  "ownerEmail": "fs.scarlet.g@gmail.com",
+  "site": "scarlet.fortunestudios.jp",
+  "profile": {
+    "targetAudience": "Scarlet project visitors and operators.",
+    "desiredImpression": "Calm, precise, protected, and ready for real operations.",
+    "avoidImpression": "Temporary, vague, overly decorative, or hard to maintain.",
+    "preferredLanguage": "Japanese first, with short English system labels when useful."
+  },
+  "voice": {
+    "personality": ["clear", "direct", "composed"],
+    "tone": ["professional", "quiet", "confident"],
+    "styleRules": [
+      "Use concrete operational language.",
+      "Keep public copy short and easy to scan.",
+      "Avoid implying that the parent domain is managed by the Scarlet account."
+    ]
+  },
+  "operations": {
+    "publicDomain": "scarlet.fortunestudios.jp",
+    "workerName": "scarlet-guardian",
+    "databaseName": "scarlet-guardian",
+    "parentDomainAccount": "fortune.kanri@gmail.com"
+  }
+}
