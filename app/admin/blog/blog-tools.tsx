@@ -38,7 +38,7 @@ function buildMarkdown(post: Required<PostSeed>) {
 export function BlogTools({ seed = {} }: { seed?: PostSeed }) {
   const [post, setPost] = useState<Required<PostSeed>>({
     slug: seed.slug || "",
-    title: seed.title || "Scarletの運用メモ",
+    title: seed.title || "Scarletのブログ記事",
     description: seed.description || "Scarlet Guardianの更新内容を短く整理したメモです。",
     body: seed.body || "## 目的\n\nScarletの更新内容を、公開前に短く整理します。\n\n## 確認すること\n\n- 公開してよい情報だけを書く\n- 親ドメインの管理と混ぜない\n- 次に必要な作業を一つ残す",
     pub_date: seed.pub_date || today(),
@@ -62,7 +62,7 @@ export function BlogTools({ seed = {} }: { seed?: PostSeed }) {
         slug: "scarlet-notice",
         title: "Scarletからのお知らせ",
         description: "Scarlet Guardianに関するお知らせです。",
-        body: "## お知らせ\n\nScarlet Guardianの公開情報を更新しました。\n\n## 対象\n\n公開サイト、管理画面、運用メモの確認導線です。\n\n## 次の確認\n\n必要な文言とリンクを確認します。",
+        body: "## お知らせ\n\nScarlet Guardianの公開情報を更新しました。\n\n## 対象\n\n公開サイト、管理画面、ブログ記事の確認導線です。\n\n## 次の確認\n\n必要な文言とリンクを確認します。",
       }));
       return;
     }
@@ -108,3 +108,4 @@ export function BlogTools({ seed = {} }: { seed?: PostSeed }) {
     </section>
   );
 }
+

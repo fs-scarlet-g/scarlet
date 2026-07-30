@@ -23,7 +23,7 @@ const eventNames = [
   ["page_view", "ページ閲覧"],
   ["scarlet_primary_action", "主要CTAクリック"],
   ["scarlet_contact_start", "問い合わせ開始"],
-  ["scarlet_note_view", "運用メモ閲覧"],
+  ["scarlet_note_view", "記事閲覧"],
 ];
 
 function rate(value: number, total: number) {
@@ -109,7 +109,7 @@ export default async function AnalyticsPage() {
               <NumberField label="訪問数" name="visits" hint="GA4 users / Cloudflare visits" />
               <NumberField label="主要行動" name="readings" hint="CTAクリック、登録、詳細表示など" />
               <NumberField label="問い合わせ開始" name="chat_starts" hint="フォーム開始、連絡導線クリック" />
-              <NumberField label="メモ閲覧" name="note_views" hint="記事、運用メモ、詳細ページ閲覧" />
+              <NumberField label="メモ閲覧" name="note_views" hint="記事、ブログ、詳細ページ閲覧" />
             </div>
             <label className="mt-4 grid gap-2 text-sm font-semibold text-[#7d4b56]">
               観察メモ
@@ -206,6 +206,7 @@ function Metric({ label, value, compact = false }: { label: string; value: strin
     </div>
   );
 }
+
 
 
 

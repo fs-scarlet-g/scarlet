@@ -14,7 +14,7 @@ type PublicPost = {
 };
 
 const highlights = [
-  { label: "Purpose", title: "Scarletの公開拠点", text: "Scarletに関する案内、運用メモ、更新情報を集約するための公式サブドメインです。" },
+  { label: "Purpose", title: "Scarletの公開拠点", text: "Scarletに関する案内、ブログ記事、更新情報を集約するための公式サブドメインです。" },
   { label: "Operation", title: "運用しやすい基盤", text: "管理画面、記事管理、SNS投稿案、稼働確認を同じWorker上で扱います。" },
   { label: "Domain", title: "サブドメイン単位で安全に公開", text: "親ドメインは既存アカウントで維持し、scarletだけをScarlet用Workerへ接続しています。" },
 ];
@@ -81,7 +81,7 @@ export default async function Home() {
           <div className="flex flex-wrap items-end justify-between gap-3">
             <div>
               <p className="text-sm font-semibold uppercase text-[#8f263a]">Updates</p>
-              <h2 className="mt-2 text-3xl font-semibold">公開メモ</h2>
+              <h2 className="mt-2 text-3xl font-semibold">公開記事</h2>
             </div>
             <p className="text-sm text-[#5e625c]">D1に保存した公開記事を表示</p>
           </div>
@@ -119,7 +119,7 @@ export default async function Home() {
             <p className="mt-4 leading-8 text-[#5e625c]">管理画面でメモを保存し、公開状態にしたものをトップへ表示します。分析画面では週次の数値と改善判断を残します。</p>
           </div>
           <ol className="grid gap-3">
-            {["管理画面で記事・SNS案を作成", "公開してよい記事をpublishedにする", "トップに公開メモとして表示", "分析画面で反応を確認"].map((item, index) => (
+            {["管理画面で記事・SNS案を作成", "公開してよい記事をpublishedにする", "トップに公開記事として表示", "分析画面で反応を確認"].map((item, index) => (
               <li className="flex gap-4 rounded-lg border border-[#d7cabc] bg-white p-4" key={item}>
                 <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#8f263a] text-sm font-semibold text-white">{index + 1}</span>
                 <span className="self-center leading-7 text-[#20241f]">{item}</span>
@@ -131,3 +131,4 @@ export default async function Home() {
     </main>
   );
 }
+

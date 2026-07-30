@@ -9,8 +9,8 @@ const links = [
   },
   {
     href: "/admin/blog",
-    title: "運用メモ管理",
-    description: "公開メモ案、下書き、Markdown出力を管理します。",
+    title: "ブログ管理",
+    description: "ブログ記事案、下書き、Markdown出力を管理します。",
   },
   {
     href: "/admin/sns",
@@ -55,3 +55,4 @@ export default function AdminPage() {
     </main>
   );
 }
+

@@ -31,7 +31,7 @@ async function getPosts() {
   return data.posts ?? [];
 }
 
-export const metadata = { title: "運用メモ管理 | Scarlet Guardian" };
+export const metadata = { title: "ブログ管理 | Scarlet Guardian" };
 
 export default async function BlogAdminPage() {
   const posts = await getPosts();
@@ -43,9 +43,9 @@ export default async function BlogAdminPage() {
       <div className="mx-auto max-w-6xl">
         <Link className="text-sm font-semibold text-[#8f263a]" href="/admin">管理ダッシュボードへ戻る</Link>
         <header className="mt-5 border-b border-[#d7cabc] pb-6">
-          <p className="text-sm font-semibold uppercase text-[#7d4b56]">Notes Admin</p>
-          <h1 className="mt-2 text-4xl font-semibold">運用メモ管理</h1>
-          <p className="mt-3 max-w-2xl leading-7 text-[#5e625c]">公開メモ、記事案、Markdown化しやすい本文をD1へ保存します。</p>
+          <p className="text-sm font-semibold uppercase text-[#7d4b56]">Blog Admin</p>
+          <h1 className="mt-2 text-4xl font-semibold">ブログ管理</h1>
+          <p className="mt-3 max-w-2xl leading-7 text-[#5e625c]">公開記事、記事案、Markdown化しやすい本文をD1へ保存します。</p>
         </header>
 
         <section className="mt-8 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
@@ -56,7 +56,7 @@ export default async function BlogAdminPage() {
                 <label className="grid gap-2 text-sm font-semibold text-[#7d4b56]">スラッグ<input className="admin-field" name="slug" placeholder="scarlet-update" /></label>
                 <label className="grid gap-2 text-sm font-semibold text-[#7d4b56]">公開日<input className="admin-field" name="pub_date" type="date" defaultValue={today} /></label>
               </div>
-              <label className="mt-3 grid gap-2 text-sm font-semibold text-[#7d4b56]">タイトル<input className="admin-field" name="title" required placeholder="例: Scarletの運用メモ" /></label>
+              <label className="mt-3 grid gap-2 text-sm font-semibold text-[#7d4b56]">タイトル<input className="admin-field" name="title" required placeholder="例: Scarletのブログ記事" /></label>
               <label className="mt-3 grid gap-2 text-sm font-semibold text-[#7d4b56]">説明文<textarea className="admin-field min-h-24" name="description" placeholder="一覧やSNS転用で使う短い説明" /></label>
               <div className="mt-3 grid gap-3 sm:grid-cols-2">
                 <label className="grid gap-2 text-sm font-semibold text-[#7d4b56]">カテゴリ<input className="admin-field" name="category" defaultValue="Scarlet運用" /></label>
@@ -67,7 +67,7 @@ export default async function BlogAdminPage() {
                 <label className="flex items-center gap-2"><input name="featured" type="checkbox" value="1" />トップ候補</label>
                 <label className="flex items-center gap-2">状態<select className="admin-field" name="status" defaultValue="draft"><option value="draft">下書き</option><option value="published">公開</option></select></label>
               </div>
-              <button className="mt-4 rounded-lg bg-[#20241f] px-5 py-3 text-sm font-semibold text-white" type="submit">記事メモを保存</button>
+              <button className="mt-4 rounded-lg bg-[#20241f] px-5 py-3 text-sm font-semibold text-white" type="submit">ブログ記事を保存</button>
             </form>
             <BlogTools seed={posts[0]} />
           </div>
@@ -97,3 +97,4 @@ export default async function BlogAdminPage() {
     </main>
   );
 }
+

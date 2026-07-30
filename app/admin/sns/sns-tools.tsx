@@ -7,7 +7,7 @@ type Slide = { heading: string; body: string };
 const ideas = [
   "Scarlet Guardianでできること",
   "公開前に確認する3つのこと",
-  "運用メモを残す理由",
+  "ブログ記事を残す理由",
 ];
 
 function wrap(ctx: CanvasRenderingContext2D, text: string, x: number, y: number, maxWidth: number, lineHeight: number) {
@@ -34,7 +34,7 @@ export function SnsTools() {
 
   const caption = useMemo(() => {
     if (!slides.length) return "";
-    return `${topic}\n\n${tone}なトーンで、Scarlet Guardianの更新内容を短く整理します。\n目的: ${goal}\n\n#ScarletGuardian #FortuneStudios #運用メモ`;
+    return `${topic}\n\n${tone}なトーンで、Scarlet Guardianの更新内容を短く整理します。\n目的: ${goal}\n\n#ScarletGuardian #FortuneStudios #ブログ管理`;
   }, [goal, slides.length, tone, topic]);
 
   function generate() {
@@ -42,7 +42,7 @@ export function SnsTools() {
       { heading: topic, body: "まず伝える内容を一つに絞ります。" },
       { heading: "運用状態を確認", body: "公開URL、管理画面、D1保存、ログイン保護を確認します。" },
       { heading: "次の一手を残す", body: "作業後に、次に見るべき指標やメモを一つ残します。" },
-      { heading: "Scarlet Guardian", body: "公開情報と運用メモを静かに整えるための場所です。" },
+      { heading: "Scarlet Guardian", body: "公開情報とブログ記事を静かに整えるための場所です。" },
     ]);
     setMessage("スライド案を生成しました。下のJSONを保存フォームへ貼れます。");
   }
@@ -118,3 +118,4 @@ export function SnsTools() {
     </section>
   );
 }
+
