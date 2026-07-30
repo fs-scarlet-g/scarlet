@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Scarlet Guardian",
-  description: "Scarlet project site and operations console.",
+  title: "Scarlet Guardian | ブログ・SNS・分析管理",
+  description: "Scarletのブログ、SNS投稿案、アクセス分析、公開文チェックを扱う運用サイトです。",
 };
 
 export default function RootLayout({
@@ -17,3 +17,4 @@ export default function RootLayout({
     </html>
   );
 }
+
