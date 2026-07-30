@@ -52,10 +52,11 @@ export default async function Home() {
             <p className="text-sm font-semibold uppercase text-[#8f263a]">Fortune Studios / Scarlet</p>
             <h1 className="mt-4 max-w-3xl text-5xl font-semibold leading-tight text-[#20241f] md:text-7xl">Scarlet Guardian</h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[#5e625c]">
-              Scarletの情報発信と運用準備を支える公開サイトです。必要な情報を静かに整理し、更新・記録・確認を継続できる形で管理します。
+              Scarletのブログ記事、告知、SNS投稿案、アクセス分析を管理する公開サイトです。必要な情報を静かに整理し、公開前の文章チェックまで同じ場所で扱えます。
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <a className="rounded-lg bg-[#20241f] px-5 py-3 text-sm font-semibold text-white" href="#updates">更新を見る</a>
+              <a className="rounded-lg border border-[#cbbfac] px-5 py-3 text-sm font-semibold text-[#20241f]" href="/oracle">公開文チェック</a>
               <a className="rounded-lg border border-[#cbbfac] px-5 py-3 text-sm font-semibold text-[#20241f]" href="/admin">管理画面</a>
             </div>
           </div>
@@ -131,4 +132,6 @@ export default async function Home() {
     </main>
   );
 }
+
+
 
