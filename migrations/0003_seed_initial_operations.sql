@@ -3,7 +3,7 @@ SELECT '2026年7月 第5週', 120, 14, 7, 22, '公開メモから管理導線ま
 WHERE NOT EXISTS (SELECT 1 FROM analytics_summaries WHERE period = '2026年7月 第5週');
 
 INSERT INTO posts (slug, title, description, body, pub_date, category, tags, featured, status)
-SELECT 'scarlet-first-operation-note', 'Scarlet Guardianの運用を開始しました', 'Scarlet用の公開サイトと管理画面を使い、更新メモと分析記録を残せるようにしました。', '## 運用開始\n\nScarlet Guardianの公開サイトと管理画面を整備しました。記事メモ、SNS投稿案、アクセス分析をD1へ保存し、公開してよい記事はトップページにも表示できます。\n\n## 確認すること\n\n- 管理画面がGoogleログインで保護されていること\n- publishedの記事が公開トップに表示されること\n- 分析メモが週次で保存できること', '2026-07-30', 'Scarlet運用', 'Scarlet, Fortune Studios, 運用開始', 1, 'published'
+SELECT 'scarlet-first-operation-note', 'Scarlet Guardianを公開しました', 'Scarlet Guardianの公式サイトとして、鑑定案内とお知らせを掲載していきます。', '## Scarlet Guardianについて\n\nScarlet Guardianは、迷いや違和感を言葉にし、次の一歩を選びやすくするための鑑定サイトです。\n\n## 掲載内容\n\n- 鑑定に関するお知らせ\n- 日々の読み物\n- 受付や更新に関する案内', '2026-07-30', 'お知らせ', 'Scarlet, Fortune Studios, お知らせ', 1, 'published'
 WHERE NOT EXISTS (SELECT 1 FROM posts WHERE slug = 'scarlet-first-operation-note');
 
 INSERT INTO sns_drafts (platform, topic, goal, tone, body, caption, slides_json, status)

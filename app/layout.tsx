@@ -2,8 +2,8 @@
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Scarlet Guardian | ブログ・SNS・分析管理",
-  description: "Scarletのブログ、SNS投稿案、アクセス分析、公開文チェックを扱う運用サイトです。",
+  title: "Scarlet Guardian | Fortune Studios",
+  description: "Scarlet Guardianの公式サイトです。鑑定案内、お知らせ、読み物を掲載しています。",
 };
 
 export default function RootLayout({
