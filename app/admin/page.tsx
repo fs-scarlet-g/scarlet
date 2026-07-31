@@ -17,11 +17,6 @@ const links = [
     title: "SNSコンテンツ生成",
     description: "投稿案、キャプション、告知文の準備を行います。",
   },
-  {
-    href: "/oracle",
-    title: "公開文チェック",
-    description: "記事、告知、SNS文面を公開前に簡易確認します。",
-  },
 ];
 
 export const metadata = {
@@ -48,7 +43,7 @@ export default function AdminPage() {
           </pre>
         </header>
 
-        <section className="mt-8 grid gap-4 md:grid-cols-4" aria-label="管理メニュー">
+        <section className="mt-8 grid gap-4 md:grid-cols-3" aria-label="管理メニュー">
           {links.map((item) => (
             <Link className="rounded-lg border border-[#d7cabc] bg-white p-5 transition hover:border-[#8f263a]" href={item.href} key={item.href}>
               <span className="text-sm font-semibold text-[#8f263a]">{item.title}</span>

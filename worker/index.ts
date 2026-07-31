@@ -28,6 +28,7 @@ type AdminSession = {
 
 const ADMIN_EMAIL = "fs.scarlet.g@gmail.com";
 const ADMIN_SESSION_COOKIE = "scarlet_admin_session";
+const ANALYTICS_TAGS = `<script async src="https://www.googletagmanager.com/gtag/js?id=G-K0H8MMZKNF"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag("js", new Date());gtag("config", "G-K0H8MMZKNF");</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"f5fdafbd4c4e45d3bf8d2c951c60de0f"}'></script>`;
 
 function json(body: unknown, init: ResponseInit = {}) {
   return Response.json(body, {
@@ -43,6 +44,24 @@ function redirect(location: string, status = 303) {
   return new Response(null, {
     status,
     headers: { location },
+  });
+}
+
+async function withAnalytics(response: Response) {
+  const contentType = response.headers.get("content-type") ?? "";
+  if (!contentType.includes("text/html")) return response;
+
+  const html = await response.text();
+  if (html.includes('src="https://www.googletagmanager.com/gtag/js?id=G-K0H8MMZKNF"') && html.includes('src="https://static.cloudflareinsights.com/beacon.min.js"')) {
+    return new Response(html, response);
+  }
+
+  const headers = new Headers(response.headers);
+  headers.delete("content-length");
+  return new Response(html.replace("</head>", `${ANALYTICS_TAGS}</head>`), {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
   });
 }
 
@@ -289,7 +308,7 @@ const worker = {
       return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
     }
 
-    return response;
+    return withAnalytics(response);
   },
 };
 
