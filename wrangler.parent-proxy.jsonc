@@ -2,13 +2,14 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "scarlet-parent-proxy",
   "main": "src/parent-proxy.ts",
-  "compatibility_date": "2026-07-29",
+  "compatibility_date": "2026-05-22",
   "account_id": "cfda786a82241adf6b21f772dbc87544",
   "workers_dev": false,
   "routes": [
     {
-      "pattern": "scarlet.fortunestudios.jp/*",
-      "zone_name": "fortunestudios.jp"
+      "pattern": "scarlet.fortunestudios.jp",
+      "zone_name": "fortunestudios.jp",
+      "custom_domain": true
     }
   ]
 }

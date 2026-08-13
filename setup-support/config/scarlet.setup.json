@@ -5,7 +5,7 @@
                  "accessTokenStoredAsWranglerSecret":  false
              },
     "project":  {
-                    "siteName":  "Scarlet Guardian",
+                    "siteName":  "Scarlet Donovan",
                     "domain":  "scarlet.fortunestudios.jp",
                     "workerName":  "scarlet-guardian",
                     "repositoryName":  "scarlet-guardian-site"
@@ -47,3 +47,4 @@
                     "bookingUrl":  ""
                 }
 }
+

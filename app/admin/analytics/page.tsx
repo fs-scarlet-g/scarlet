@@ -61,7 +61,7 @@ async function getSummaries() {
 }
 
 export const metadata = {
-  title: "アクセス分析 | Scarlet Guardian",
+  title: "アクセス分析 | Scarlet Donovan",
 };
 
 export default async function AnalyticsPage() {
@@ -206,6 +206,7 @@ function Metric({ label, value, compact = false }: { label: string; value: strin
     </div>
   );
 }
+
 
 
 

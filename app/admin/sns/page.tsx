@@ -30,7 +30,7 @@ async function getDrafts() {
   return data.drafts ?? [];
 }
 
-export const metadata = { title: "SNSコンテンツ生成 | Scarlet Guardian" };
+export const metadata = { title: "SNSコンテンツ生成 | Scarlet Donovan" };
 
 export default async function SnsAdminPage() {
   const drafts = await getDrafts();
@@ -59,7 +59,7 @@ export default async function SnsAdminPage() {
                 <label className="grid gap-2 text-sm font-semibold text-[#7d4b56]">目的<select className="admin-field" name="goal" defaultValue="公開サイトへの案内"><option>公開サイトへの案内</option><option>管理メモの整理</option><option>更新告知</option><option>問い合わせ導線</option></select></label>
                 <label className="grid gap-2 text-sm font-semibold text-[#7d4b56]">トーン<select className="admin-field" name="tone" defaultValue="静かで正確"><option>静かで正確</option><option>短く実用的</option><option>やさしく落ち着いた</option></select></label>
               </div>
-              <label className="mt-3 grid gap-2 text-sm font-semibold text-[#7d4b56]">スライド案<textarea className="admin-field min-h-40 font-mono text-sm leading-7" name="slides_json" placeholder={'[{"heading":"Scarlet Guardian","body":"更新内容を短く伝えます。"}]'} /></label>
+              <label className="mt-3 grid gap-2 text-sm font-semibold text-[#7d4b56]">スライド案<textarea className="admin-field min-h-40 font-mono text-sm leading-7" name="slides_json" placeholder={'[{"heading":"Scarlet Donovan","body":"更新内容を短く伝えます。"}]'} /></label>
               <label className="mt-3 grid gap-2 text-sm font-semibold text-[#7d4b56]">投稿本文<textarea className="admin-field min-h-36" name="body" placeholder="投稿の下書き" /></label>
               <label className="mt-3 grid gap-2 text-sm font-semibold text-[#7d4b56]">キャプション<textarea className="admin-field min-h-36" name="caption" placeholder="#Scarlet #FortuneStudios" /></label>
               <button className="mt-4 rounded-lg bg-[#20241f] px-5 py-3 text-sm font-semibold text-white" type="submit">SNS案を保存</button>
@@ -89,3 +89,4 @@ export default async function SnsAdminPage() {
     </main>
   );
 }
+

@@ -2,22 +2,15 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "scarlet-guardian",
   "main": "worker/index.ts",
-  "compatibility_date": "2026-07-29",
+  "compatibility_date": "2026-05-22",
   "compatibility_flags": ["nodejs_compat"],
-  "account_id": "cfda786a82241adf6b21f772dbc87544",
+  "account_id": "ac8c2578aeccae5fce1a75e0b4e47ca0",
   "workers_dev": true,
-  "routes": [
-    {
-      "pattern": "scarlet.fortunestudios.jp",
-      "zone_name": "fortunestudios.jp",
-      "custom_domain": true
-    }
-  ],
   "d1_databases": [
     {
       "binding": "DB",
       "database_name": "scarlet-guardian",
-      "database_id": "929a0cd6-c09d-4c5e-9484-f5d3aeeba2e7"
+      "database_id": "088a74ab-5563-45af-8c1b-ae8dbef3b5c9"
     }
   ]
 }

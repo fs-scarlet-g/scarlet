@@ -31,7 +31,7 @@ async function getPosts() {
   return data.posts ?? [];
 }
 
-export const metadata = { title: "ブログ管理 | Scarlet Guardian" };
+export const metadata = { title: "ブログ管理 | Scarlet Donovan" };
 
 export default async function BlogAdminPage() {
   const posts = await getPosts();
@@ -97,4 +97,5 @@ export default async function BlogAdminPage() {
     </main>
   );
 }
+
 

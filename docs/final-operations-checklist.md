@@ -39,7 +39,7 @@ Because of that, browser form submission could not be automated from this sessio
 
 - Local repository was initialized at `C:\dev\Projects\FM002_scarlet`.
 - Current branch: `codex/scarlet-admin`.
-- Local commits include the Scarlet Guardian implementation and later naming/function updates.
+- Local commits include the Scarlet Donovan implementation and later naming/function updates.
 - No remote is configured.
 - `gh` CLI is not available in this environment.
 
@@ -76,3 +76,4 @@ curl.exe https://scarlet.fortunestudios.jp/health
 curl.exe https://scarlet.fortunestudios.jp/api/public/posts
 curl.exe https://scarlet.fortunestudios.jp/api/admin/posts
 ```
+

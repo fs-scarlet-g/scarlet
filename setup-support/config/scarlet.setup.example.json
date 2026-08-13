@@ -1,6 +1,6 @@
-{
+﻿{
   "project": {
-    "siteName": "Scarlet Guardian",
+    "siteName": "Scarlet Donovan",
     "workerName": "scarlet-guardian",
     "domain": "scarlet.fortunestudios.jp",
     "repositoryName": "scarlet-guardian-site"
@@ -33,7 +33,7 @@
     "bookingUrl": ""
   },
   "legal": {
-    "operatorName": "吉田 勲"
+    "operatorName": "蜷臥伐 蜍ｲ"
   },
   "analytics": {
     "ga4MeasurementId": "",
@@ -41,3 +41,4 @@
     "clarityProjectId": ""
   }
 }
+

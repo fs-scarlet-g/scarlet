@@ -39,7 +39,7 @@ export function BlogTools({ seed = {} }: { seed?: PostSeed }) {
   const [post, setPost] = useState<Required<PostSeed>>({
     slug: seed.slug || "",
     title: seed.title || "Scarletのブログ記事",
-    description: seed.description || "Scarlet Guardianの更新内容を短く整理したメモです。",
+    description: seed.description || "Scarlet Donovanの更新内容を短く整理したメモです。",
     body: seed.body || "## 目的\n\nScarletの更新内容を、公開前に短く整理します。\n\n## 確認すること\n\n- 公開してよい情報だけを書く\n- 親ドメインの管理と混ぜない\n- 次に必要な作業を一つ残す",
     pub_date: seed.pub_date || today(),
     category: seed.category || "Scarlet運用",
@@ -61,8 +61,8 @@ export function BlogTools({ seed = {} }: { seed?: PostSeed }) {
         ...current,
         slug: "scarlet-notice",
         title: "Scarletからのお知らせ",
-        description: "Scarlet Guardianに関するお知らせです。",
-        body: "## お知らせ\n\nScarlet Guardianの公開情報を更新しました。\n\n## 対象\n\n公開サイト、管理画面、ブログ記事の確認導線です。\n\n## 次の確認\n\n必要な文言とリンクを確認します。",
+        description: "Scarlet Donovanに関するお知らせです。",
+        body: "## お知らせ\n\nScarlet Donovanの公開情報を更新しました。\n\n## 対象\n\n公開サイト、管理画面、ブログ記事の確認導線です。\n\n## 次の確認\n\n必要な文言とリンクを確認します。",
       }));
       return;
     }
@@ -80,8 +80,8 @@ export function BlogTools({ seed = {} }: { seed?: PostSeed }) {
       ...current,
       slug: "scarlet-update",
       title: "Scarlet更新メモ",
-      description: "Scarlet Guardianの更新内容と次の作業を整理します。",
-      body: "## 更新内容\n\nScarlet Guardianの管理機能を更新しました。\n\n## 影響範囲\n\n公開ページ、管理画面、D1保存データを確認します。\n\n## 次の一手\n\n運用しながら不足している入力欄を追加します。",
+      description: "Scarlet Donovanの更新内容と次の作業を整理します。",
+      body: "## 更新内容\n\nScarlet Donovanの管理機能を更新しました。\n\n## 影響範囲\n\n公開ページ、管理画面、D1保存データを確認します。\n\n## 次の一手\n\n運用しながら不足している入力欄を追加します。",
     }));
   }
 
@@ -108,4 +108,5 @@ export function BlogTools({ seed = {} }: { seed?: PostSeed }) {
     </section>
   );
 }
+
 

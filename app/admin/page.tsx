@@ -20,7 +20,7 @@ const links = [
 ];
 
 export const metadata = {
-  title: "管理ダッシュボード | Scarlet Guardian",
+  title: "管理ダッシュボード | Scarlet Donovan",
 };
 
 export default function AdminPage() {
@@ -30,7 +30,7 @@ export default function AdminPage() {
     <main className="min-h-screen bg-[#f5f0e8] px-5 py-8 text-[#20241f]">
       <div className="mx-auto max-w-6xl">
         <Link className="text-sm font-semibold text-[#8f263a]" href="/">
-          Scarlet Guardian
+          Scarlet Donovan
         </Link>
         <header className="mt-5 border-b border-[#d7cabc] pb-6">
           <p className="text-sm font-semibold uppercase text-[#7d4b56]">Admin</p>
@@ -55,6 +55,7 @@ export default function AdminPage() {
     </main>
   );
 }
+
 
 
 

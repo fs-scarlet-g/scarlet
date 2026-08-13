@@ -1,4 +1,4 @@
-﻿import { DEFAULT_DEVICE_SIZES, DEFAULT_IMAGE_SIZES, handleImageOptimization } from "vinext/server/image-optimization";
+import { DEFAULT_DEVICE_SIZES, DEFAULT_IMAGE_SIZES, handleImageOptimization } from "vinext/server/image-optimization";
 import handler from "vinext/server/app-router-entry";
 
 interface Env {
@@ -28,6 +28,7 @@ type AdminSession = {
 
 const ADMIN_EMAIL = "fs.scarlet.g@gmail.com";
 const ADMIN_SESSION_COOKIE = "scarlet_admin_session";
+const TENANT_ID = "scarlet-donovan";
 const ANALYTICS_TAGS = `<script async src="https://www.googletagmanager.com/gtag/js?id=G-K0H8MMZKNF"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag("js", new Date());gtag("config", "G-K0H8MMZKNF");</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"f5fdafbd4c4e45d3bf8d2c951c60de0f"}'></script>`;
 
 function json(body: unknown, init: ResponseInit = {}) {
@@ -74,6 +75,31 @@ function formNumber(form: FormData, key: string) {
   return Number(formValue(form, key).replace(/,/g, "")) || 0;
 }
 
+function sanitizeText(value: unknown, maxLength: number) {
+  return String(value ?? "")
+    .trim()
+    .replace(/\s+/g, " ")
+    .slice(0, maxLength);
+}
+
+function getReferrerHost(referrer: string) {
+  if (!referrer) return "";
+  try {
+    return new URL(referrer).hostname.slice(0, 120);
+  } catch {
+    return "";
+  }
+}
+
+function toIsoDate(date = new Date()) {
+  return date.toISOString().slice(0, 10);
+}
+
+async function sha256Hex(value: string) {
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value));
+  return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, "0")).join("");
+}
+
 function rate(value: number, total: number) {
   if (!total) return "0.0%";
   return `${((value / total) * 100).toFixed(1)}%`;
@@ -84,6 +110,109 @@ function nextAnalyticsAction(visits: number, readings: number, chatStarts: numbe
   if (readings / visits < 0.08) return "トップページの主要導線と説明文を見直してください。";
   if (chatStarts / visits < 0.05) return "管理画面や問い合わせ導線までの流れを短くしてください。";
   return "閲覧から行動までの流れを検証し、次の改善メモに残してください。";
+}
+
+async function handleAnalyticsEvent(request: Request, env: Env) {
+  if (!env.DB) return json({ error: "D1 database binding DB is not configured" }, { status: 500 });
+  if (request.method !== "POST") return json({ error: "Method Not Allowed" }, { status: 405 });
+
+  const body = (await request.json().catch(() => null)) as null | {
+    tenantId?: unknown;
+    eventName?: unknown;
+    pagePath?: unknown;
+    pageTitle?: unknown;
+    referrer?: unknown;
+    source?: unknown;
+    medium?: unknown;
+    campaign?: unknown;
+    linkUrl?: unknown;
+    linkText?: unknown;
+  };
+
+  if (!body) return json({ error: "Invalid JSON body." }, { status: 400 });
+
+  const eventName = sanitizeText(body.eventName, 60) || "page_view";
+  const pagePath = sanitizeText(body.pagePath, 240) || "/";
+  const referrer = sanitizeText(body.referrer, 500);
+  const userAgent = sanitizeText(request.headers.get("user-agent"), 300);
+  const ip = request.headers.get("cf-connecting-ip") || request.headers.get("x-forwarded-for") || "";
+  const visitorHash = await sha256Hex(`${toIsoDate()}|${ip}|${userAgent}`);
+  const id = crypto.randomUUID();
+
+  await env.DB.prepare(
+    `INSERT INTO analytics_events
+      (id, created_at, tenant_id, event_name, page_path, page_title, referrer, referrer_host,
+       source, medium, campaign, link_url, link_text, visitor_hash, user_agent)
+      VALUES (?, datetime('now'), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+  )
+    .bind(
+      id,
+      sanitizeText(body.tenantId, 80) || TENANT_ID,
+      eventName,
+      pagePath,
+      sanitizeText(body.pageTitle, 160),
+      referrer,
+      getReferrerHost(referrer),
+      sanitizeText(body.source, 80),
+      sanitizeText(body.medium, 80),
+      sanitizeText(body.campaign, 120),
+      sanitizeText(body.linkUrl, 500),
+      sanitizeText(body.linkText, 160),
+      visitorHash,
+      userAgent,
+    )
+    .run();
+
+  return json({ ok: true, id });
+}
+
+async function handleAnalyticsEventsReport(env: Env) {
+  if (!env.DB) return json({ error: "D1 database binding DB is not configured" }, { status: 500 });
+
+  const totals = await env.DB.prepare(
+    `SELECT
+      COUNT(*) AS events,
+      SUM(CASE WHEN event_name = 'page_view' THEN 1 ELSE 0 END) AS page_views,
+      COUNT(DISTINCT CASE WHEN event_name = 'page_view' THEN visitor_hash END) AS visitors
+     FROM analytics_events
+     WHERE tenant_id = ? AND created_at >= datetime('now', '-30 days')`,
+  ).bind(TENANT_ID).all();
+
+  const events = await env.DB.prepare(
+    `SELECT event_name, COUNT(*) AS count
+     FROM analytics_events
+     WHERE tenant_id = ? AND created_at >= datetime('now', '-30 days')
+     GROUP BY event_name
+     ORDER BY count DESC
+     LIMIT 20`,
+  ).bind(TENANT_ID).all();
+
+  const pages = await env.DB.prepare(
+    `SELECT page_path, COUNT(*) AS page_views
+     FROM analytics_events
+     WHERE tenant_id = ? AND event_name = 'page_view' AND created_at >= datetime('now', '-30 days')
+     GROUP BY page_path
+     ORDER BY page_views DESC
+     LIMIT 20`,
+  ).bind(TENANT_ID).all();
+
+  const referrers = await env.DB.prepare(
+    `SELECT COALESCE(NULLIF(referrer_host, ''), '(direct)') AS referrer_host, COUNT(*) AS visits
+     FROM analytics_events
+     WHERE tenant_id = ? AND event_name = 'page_view' AND created_at >= datetime('now', '-30 days')
+     GROUP BY COALESCE(NULLIF(referrer_host, ''), '(direct)')
+     ORDER BY visits DESC
+     LIMIT 20`,
+  ).bind(TENANT_ID).all();
+
+  return json({
+    period: "last_30_days",
+    tenantId: TENANT_ID,
+    totals: totals.results?.[0] ?? { events: 0, page_views: 0, visitors: 0 },
+    events: events.results ?? [],
+    pages: pages.results ?? [],
+    referrers: referrers.results ?? [],
+  });
 }
 
 async function requireAdmin(request: Request, env: Env) {
@@ -173,12 +302,19 @@ const worker = {
       );
     }
 
+    if (url.pathname === "/api/analytics/event") {
+      return handleAnalyticsEvent(request, env);
+    }
+
 
     if (url.pathname === "/api/public/posts") {
       const rows = await env.DB.prepare(
         "SELECT id, slug, title, description, body, pub_date, category, tags, featured, created_at FROM posts WHERE status = 'published' ORDER BY featured DESC, id DESC LIMIT 6",
       ).all();
       return json({ posts: rows.results });
+    }    if (url.pathname === "/api/admin/analytics-events") {
+      if (!(await requireAdmin(request, env))) return json({ error: "Unauthorized" }, { status: 401 });
+      return handleAnalyticsEventsReport(env);
     }    if (url.pathname === "/api/admin/analytics") {
       if (!(await requireAdmin(request, env))) return json({ error: "Unauthorized" }, { status: 401 });
 
@@ -313,4 +449,3 @@ const worker = {
 };
 
 export default worker;
-

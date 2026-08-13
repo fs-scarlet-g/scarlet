@@ -5,7 +5,7 @@ import { useMemo, useState } from "react";
 type Slide = { heading: string; body: string };
 
 const ideas = [
-  "Scarlet Guardianでできること",
+  "Scarlet Donovanでできること",
   "公開前に確認する3つのこと",
   "ブログ記事を残す理由",
 ];
@@ -34,7 +34,7 @@ export function SnsTools() {
 
   const caption = useMemo(() => {
     if (!slides.length) return "";
-    return `${topic}\n\n${tone}なトーンで、Scarlet Guardianの更新内容を短く整理します。\n目的: ${goal}\n\n#ScarletGuardian #FortuneStudios #ブログ管理`;
+    return `${topic}\n\n${tone}なトーンで、Scarlet Donovanの更新内容を短く整理します。\n目的: ${goal}\n\n#ScarletGuardian #FortuneStudios #ブログ管理`;
   }, [goal, slides.length, tone, topic]);
 
   function generate() {
@@ -42,7 +42,7 @@ export function SnsTools() {
       { heading: topic, body: "まず伝える内容を一つに絞ります。" },
       { heading: "運用状態を確認", body: "公開URL、管理画面、D1保存、ログイン保護を確認します。" },
       { heading: "次の一手を残す", body: "作業後に、次に見るべき指標やメモを一つ残します。" },
-      { heading: "Scarlet Guardian", body: "公開情報とブログ記事を静かに整えるための場所です。" },
+      { heading: "Scarlet Donovan", body: "公開情報とブログ記事を静かに整えるための場所です。" },
     ]);
     setMessage("スライド案を生成しました。下のJSONを保存フォームへ貼れます。");
   }
@@ -70,7 +70,7 @@ export function SnsTools() {
     ctx.fillRect(0, 0, 1080, 18);
     ctx.fillStyle = "#20241f";
     ctx.font = "700 48px sans-serif";
-    ctx.fillText("Scarlet Guardian", 90, 150);
+    ctx.fillText("Scarlet Donovan", 90, 150);
     ctx.font = "700 78px sans-serif";
     wrap(ctx, slide.heading, 90, 430, 900, 96);
     ctx.font = "500 48px sans-serif";
@@ -100,7 +100,7 @@ export function SnsTools() {
           {slides.map((slide, index) => (
             <article className="rounded-lg border border-[#d7cabc] bg-white p-4" key={`${slide.heading}-${index}`}>
               <div className="aspect-[9/16] rounded-lg border border-[#d7cabc] bg-[#f6f2ea] p-5">
-                <p className="text-xs font-semibold uppercase text-[#8f263a]">Scarlet Guardian</p>
+                <p className="text-xs font-semibold uppercase text-[#8f263a]">Scarlet Donovan</p>
                 <h3 className="mt-8 text-2xl font-semibold">{slide.heading}</h3>
                 <p className="mt-5 leading-7 text-[#5e625c]">{slide.body}</p>
               </div>
@@ -118,4 +118,5 @@ export function SnsTools() {
     </section>
   );
 }
+
 

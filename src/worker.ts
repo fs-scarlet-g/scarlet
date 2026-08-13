@@ -1,4 +1,4 @@
-export interface Env {
+﻿export interface Env {
   DB: D1Database;
 }
 
@@ -30,7 +30,7 @@ export default {
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Scarlet Guardian</title>
+    <title>Scarlet Donovan</title>
     <style>
       body {
         margin: 0;
@@ -59,10 +59,11 @@ export default {
   </head>
   <body>
     <main>
-      <h1>Scarlet Guardian</h1>
-      <p>Scarlet の Cloudflare Worker が起動しています。</p>
+      <h1>Scarlet Donovan</h1>
+      <p>Scarlet 縺ｮ Cloudflare Worker 縺瑚ｵｷ蜍輔＠縺ｦ縺・∪縺吶・/p>
     </main>
   </body>
 </html>`);
   },
 };
+
