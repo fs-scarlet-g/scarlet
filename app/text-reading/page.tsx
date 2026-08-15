@@ -53,11 +53,11 @@ const boundaries = [
 const methodChoice = [
   {
     title: "マヤ暦が向いている相談",
-    body: "自分の資質、役割、関係性の噛み合い、日々の流れを見たい時に向いています。今の自分が無理な役割を背負っていないか、どのペースで動くと自然かを整理します。",
+    body: "自分の資質、役割、関係性の噛み合い、日々の流れを見たい時に向いています。太陽の紋章、ウェイブスペル、音、周期を重ね、今の自分が無理な役割を背負っていないか、どのペースで動くと自然かを整理します。",
   },
   {
     title: "インド占星術が向いている相談",
-    body: "人生全体のテーマ、仕事や結婚の長期的な流れ、転機の時期感を見たい時に向いています。出生図とダシャーから、今強まっている課題と伸ばしやすい領域を読みます。",
+    body: "人生全体のテーマ、仕事や結婚の長期的な流れ、転機の時期感を見たい時に向いています。ラグナ、月、ハウス、惑星、ダシャー、必要に応じてトランジットを重ね、今強まっている課題と伸ばしやすい領域を読みます。",
   },
 ];
 
@@ -71,6 +71,41 @@ const samples = [
     title: "インド占星術サンプル",
     label: "転機の焦りを感じている時",
     body: "出生図では、仕事や役割に関わる領域が強く反応しています。今の焦りは、ただの迷いというより、これまでの動き方を見直す時期に入っているサインとして読めます。ダシャーの流れを見ると、無理に結果を急ぐより、生活基盤、契約、働き方の条件を整えることが先です。大きく動く前に、削るもの、残すもの、次に育てるものを切り分けると、判断の精度が上がります。",
+  },
+];
+
+const deepSamples = [
+  {
+    title: "マヤ暦の深読み例",
+    label: "太陽の紋章 × ウェイブスペル × 音 × 周期",
+    body: "太陽の紋章が外へ働きかける力を示し、ウェイブスペルが内側で続いている物語を示します。そこに音を重ねると、場の中で担いやすい役割が見えてきます。たとえば、外側では人を励ます紋章が出ていても、内側のウェイブスペルが慎重さを求め、音が調整役に偏っている場合、本人は明るく振る舞いながら無理に場を支えていることがあります。この時は、行動を増やすより、どの関係で役割を返すかを読むほうが重要です。",
+  },
+  {
+    title: "インド占星術の深読み例",
+    label: "ラグナ × 月 × ハウス × ダシャー × トランジット",
+    body: "ラグナは現実への立ち方、月は心の反応、ハウスは悩みが起きている領域を示します。そこにダシャーを重ねると、なぜ今そのテーマが前に出ているのかが見えます。たとえば、仕事のハウスが刺激され、月が疲れやすい配置にあり、ダシャーが責任や構造を問う時期なら、単なる転職運ではなく、働き方の土台を組み替えるタイミングとして読みます。トランジットは、その変化が今どのくらい強く表面化しているかを見る補助として扱います。",
+  },
+];
+
+const readingLevels = [
+  {
+    title: "初めての方向け",
+    body: "専門用語を前提にせず、相談内容に必要な要素だけを選んで説明します。資質、今の流れ、注意点、次の一歩が分かることを優先します。",
+  },
+  {
+    title: "深く読みたい方向け",
+    body: "すでに占術に親しんでいる方向けに、複数の要素を分けて読みます。マヤ暦なら紋章と音のズレ、インド占星術ならラグナと月の差、ダシャーとハウスの重なりまで扱います。",
+  },
+];
+
+const strengthsAndLimits = [
+  {
+    title: "マヤ暦の強みと限界",
+    body: "強みは、資質、役割、関係性、流れの使い方を直感的に整理しやすいことです。限界は、出来事の日付や相手の行動を細かく確定する読みには向かないことです。",
+  },
+  {
+    title: "インド占星術の強みと限界",
+    body: "強みは、出生図と周期から人生全体の構造、長期テーマ、時期の強弱を読めることです。限界は、出生時間の精度に影響される領域があり、不明な場合は断定できる範囲が狭くなることです。",
   },
 ];
 
@@ -164,6 +199,52 @@ export default function TextReadingPage() {
             <ul className="mt-5 grid gap-3 leading-8 text-[#685b55]">
               {boundaries.map((item) => <li key={item}>{item}</li>)}
             </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#f3eee6] px-5 py-14 text-[#2f2928]">
+        <div className="mx-auto max-w-6xl">
+          <p className="text-sm font-extrabold uppercase text-[#7f3440]">Reading Depth</p>
+          <h2 className="mt-2 text-3xl font-semibold sm:text-4xl">読みの深さを選ぶ</h2>
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            {readingLevels.map((item) => (
+              <article className="rounded-lg border border-[#bfae9e] bg-[#fffaf3] p-6 shadow-sm" key={item.title}>
+                <h3 className="text-2xl font-semibold">{item.title}</h3>
+                <p className="mt-3 leading-8 text-[#685b55]">{item.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#211f1e] px-5 py-14 text-[#f8f1e8]">
+        <div className="mx-auto max-w-6xl">
+          <p className="text-sm font-extrabold uppercase text-[#d8b7a7]">Advanced Samples</p>
+          <h2 className="mt-2 text-3xl font-semibold sm:text-4xl">重ね読みサンプル</h2>
+          <div className="mt-8 grid gap-4 lg:grid-cols-2">
+            {deepSamples.map((sample) => (
+              <article className="rounded-lg border border-[#d8b7a7]/25 bg-[#2a2d2a] p-6" key={sample.title}>
+                <p className="text-sm font-extrabold uppercase text-[#d8b7a7]">{sample.title}</p>
+                <h3 className="mt-2 text-2xl font-semibold">{sample.label}</h3>
+                <p className="mt-4 leading-8 text-[#e7d8cc]">{sample.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#fff8f0] px-5 py-14 text-[#2f2928]">
+        <div className="mx-auto max-w-6xl">
+          <p className="text-sm font-extrabold uppercase text-[#7f3440]">Strengths / Limits</p>
+          <h2 className="mt-2 text-3xl font-semibold sm:text-4xl">占術ごとの強みと限界</h2>
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            {strengthsAndLimits.map((item) => (
+              <article className="rounded-lg border border-[#bfae9e] bg-white p-6 shadow-sm" key={item.title}>
+                <h3 className="text-2xl font-semibold">{item.title}</h3>
+                <p className="mt-3 leading-8 text-[#685b55]">{item.body}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
