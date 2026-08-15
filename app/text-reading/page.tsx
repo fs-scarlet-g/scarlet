@@ -50,6 +50,30 @@ const boundaries = [
   "送られた個人情報は鑑定目的の範囲で扱い、不要な情報は求めません",
 ];
 
+const methodChoice = [
+  {
+    title: "マヤ暦が向いている相談",
+    body: "自分の資質、役割、関係性の噛み合い、日々の流れを見たい時に向いています。今の自分が無理な役割を背負っていないか、どのペースで動くと自然かを整理します。",
+  },
+  {
+    title: "インド占星術が向いている相談",
+    body: "人生全体のテーマ、仕事や結婚の長期的な流れ、転機の時期感を見たい時に向いています。出生図とダシャーから、今強まっている課題と伸ばしやすい領域を読みます。",
+  },
+];
+
+const samples = [
+  {
+    title: "マヤ暦サンプル",
+    label: "役割を背負いすぎている時",
+    body: "あなたのKINは、場の空気を読み、必要な役割を自然に引き受けやすい響きを持っています。ただ、その力が強く出すぎると、本来は相手が持つべき責任まで自分の手元に集めてしまいます。今は、全部を整えるよりも、まず「自分が守る範囲」と「相手に返す範囲」を分ける時期です。関係を壊さないために我慢するのではなく、関係を長く続けるために線を引く。そこに今回のテーマがあります。",
+  },
+  {
+    title: "インド占星術サンプル",
+    label: "転機の焦りを感じている時",
+    body: "出生図では、仕事や役割に関わる領域が強く反応しています。今の焦りは、ただの迷いというより、これまでの動き方を見直す時期に入っているサインとして読めます。ダシャーの流れを見ると、無理に結果を急ぐより、生活基盤、契約、働き方の条件を整えることが先です。大きく動く前に、削るもの、残すもの、次に育てるものを切り分けると、判断の精度が上がります。",
+  },
+];
+
 export const metadata = {
   title: "AIテキスト鑑定 | スカーレット・ドノバン",
   description: "スカーレット・ドノバンのAIテキスト鑑定メニュー。全メニューをトライアル価格￥0で案内しています。",
@@ -140,6 +164,37 @@ export default function TextReadingPage() {
             <ul className="mt-5 grid gap-3 leading-8 text-[#685b55]">
               {boundaries.map((item) => <li key={item}>{item}</li>)}
             </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#211f1e] px-5 py-14 text-[#f8f1e8]">
+        <div className="mx-auto max-w-6xl">
+          <p className="text-sm font-extrabold uppercase text-[#d8b7a7]">How To Choose</p>
+          <h2 className="mt-2 text-3xl font-semibold sm:text-4xl">占術の使い分け</h2>
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            {methodChoice.map((item) => (
+              <article className="rounded-lg border border-[#d8b7a7]/25 bg-[#2a2d2a] p-5" key={item.title}>
+                <h3 className="text-2xl font-semibold">{item.title}</h3>
+                <p className="mt-3 leading-8 text-[#e7d8cc]">{item.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#fff8f0] px-5 py-14 text-[#2f2928]">
+        <div className="mx-auto max-w-6xl">
+          <p className="text-sm font-extrabold uppercase text-[#7f3440]">Reading Samples</p>
+          <h2 className="mt-2 text-3xl font-semibold sm:text-4xl">鑑定文サンプル</h2>
+          <div className="mt-8 grid gap-4 lg:grid-cols-2">
+            {samples.map((sample) => (
+              <article className="rounded-lg border border-[#bfae9e] bg-white p-6 shadow-sm" key={sample.title}>
+                <p className="text-sm font-extrabold uppercase text-[#7f3440]">{sample.title}</p>
+                <h3 className="mt-2 text-2xl font-semibold">{sample.label}</h3>
+                <p className="mt-4 leading-8 text-[#685b55]">{sample.body}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
