@@ -38,6 +38,12 @@ export default function VedicAstrologyDictionaryPage() {
                 </section>
               ))}
             </div>
+            <section className="mt-8 rounded-lg border border-[#7f3440]/25 bg-[#2a2d2a] p-5 text-[#f8f1e8]">
+              <p className="text-sm font-extrabold uppercase text-[#d8b7a7]">Trial Reading</p>
+              <h2 className="mt-2 text-2xl font-semibold">出生図を相談の文脈で読む</h2>
+              <p className="mt-3 leading-8 text-[#e7d8cc]">ラグナ、月、惑星、ダシャーを自分の転機や関係性に重ねて整理したい場合は、出生時間・出生地と相談内容を添えて申し込めます。</p>
+              <Link className="mt-5 inline-flex rounded-lg bg-[#d8b7a7] px-5 py-3 font-bold text-[#262625]" href="/text-reading/">￥0トライアルを見る</Link>
+            </section>
           </article>
         </div>
       </section>

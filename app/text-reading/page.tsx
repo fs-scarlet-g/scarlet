@@ -30,6 +30,26 @@ const menus = [
   },
 ];
 
+const flow = [
+  ["1", "メニューを選ぶ", "境界線、決断前、守りのメッセージ、マヤ暦、インド占星術から、今の相談に近いものを選びます。迷う場合は相談内容を先に書いても構いません。"],
+  ["2", "必要な情報を書く", "相談したいこと、今の状況、知りたい範囲を短く整理します。マヤ暦は生年月日、インド占星術は出生時間と出生地があると読みの精度が上がります。"],
+  ["3", "鑑定文を受け取る", "不安を強める断定ではなく、状況の整理、注意点、次に選べる一歩を文章で返します。読み返して使える内容を重視します。"],
+];
+
+const consultationTopics = [
+  "恋愛や人間関係で、距離の取り方を見直したい",
+  "別れる、進む、待つ、伝える前に気持ちと現実を整理したい",
+  "自分の資質、周期、転機の流れを知りたい",
+  "仕事、暮らし、役割、パートナーシップを長い時間軸で見たい",
+];
+
+const boundaries = [
+  "病気、妊娠、法律、投資など専門家の判断が必要な内容は扱いません",
+  "相手を操作する方法、復讐、監視、強制につながる相談は受けません",
+  "鑑定結果は未来の確定ではなく、判断材料として使うための文章です",
+  "送られた個人情報は鑑定目的の範囲で扱い、不要な情報は求めません",
+];
+
 export const metadata = {
   title: "AIテキスト鑑定 | スカーレット・ドノバン",
   description: "スカーレット・ドノバンのAIテキスト鑑定メニュー。全メニューをトライアル価格￥0で案内しています。",
@@ -85,6 +105,41 @@ export default function TextReadingPage() {
                 <p className="mt-4 leading-8 text-[#685b55]">{menu.body}</p>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#fff8f0] px-5 py-14 text-[#2f2928]">
+        <div className="mx-auto max-w-6xl">
+          <p className="text-sm font-extrabold uppercase text-[#7f3440]">Reading Flow</p>
+          <h2 className="mt-2 text-3xl font-semibold sm:text-4xl">鑑定の流れ</h2>
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            {flow.map(([number, title, body]) => (
+              <article className="rounded-lg border border-[#bfae9e] bg-white p-5 shadow-sm" key={title}>
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#7f3440] text-lg font-bold text-[#fff8ef]">{number}</span>
+                <h3 className="mt-4 text-2xl font-semibold">{title}</h3>
+                <p className="mt-3 leading-8 text-[#685b55]">{body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#f3eee6] px-5 py-14 text-[#2f2928]">
+        <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-2">
+          <div className="rounded-lg border border-[#bfae9e] bg-[#fffaf3] p-6 shadow-sm">
+            <p className="text-sm font-extrabold uppercase text-[#7f3440]">Topics</p>
+            <h2 className="mt-2 text-3xl font-semibold">相談できる内容</h2>
+            <ul className="mt-5 grid gap-3 leading-8 text-[#685b55]">
+              {consultationTopics.map((topic) => <li key={topic}>{topic}</li>)}
+            </ul>
+          </div>
+          <div className="rounded-lg border border-[#bfae9e] bg-[#fffaf3] p-6 shadow-sm">
+            <p className="text-sm font-extrabold uppercase text-[#7f3440]">Boundaries</p>
+            <h2 className="mt-2 text-3xl font-semibold">扱えない内容と注意事項</h2>
+            <ul className="mt-5 grid gap-3 leading-8 text-[#685b55]">
+              {boundaries.map((item) => <li key={item}>{item}</li>)}
+            </ul>
           </div>
         </div>
       </section>

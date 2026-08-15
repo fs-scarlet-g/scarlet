@@ -38,6 +38,12 @@ export default function MayanCalendarDictionaryPage() {
                 </section>
               ))}
             </div>
+            <section className="mt-8 rounded-lg border border-[#7f3440]/25 bg-[#2a2d2a] p-5 text-[#f8f1e8]">
+              <p className="text-sm font-extrabold uppercase text-[#d8b7a7]">Trial Reading</p>
+              <h2 className="mt-2 text-2xl font-semibold">自分のKINを相談に重ねて読む</h2>
+              <p className="mt-3 leading-8 text-[#e7d8cc]">用語を知るだけでなく、今の相談にどう表れるかまで整理したい場合は、マヤ暦テキスト鑑定で生年月日と相談内容を送ってください。</p>
+              <Link className="mt-5 inline-flex rounded-lg bg-[#d8b7a7] px-5 py-3 font-bold text-[#262625]" href="/text-reading/">￥0トライアルを見る</Link>
+            </section>
           </article>
         </div>
       </section>

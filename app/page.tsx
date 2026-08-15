@@ -40,6 +40,9 @@ const relationships = [
   ["ギルド", "彼女が見張る場所。訪れる人が怯えずに立ち止まれるよう、門の外に目を配っています。"],
 ];
 
+const trialApplicationHref =
+  "mailto:fs.scarlet.g@gmail.com?subject=スカーレット・ドノバン AIテキスト鑑定トライアル申込み&body=希望メニュー：%0D%0A相談したい内容：%0D%0A生年月日（マヤ暦希望の場合）：%0D%0A出生時間・出生地（インド占星術希望の場合）：";
+
 export const metadata = {
   title: copy.title,
   description: copy.description,
@@ -73,6 +76,10 @@ export default function Home() {
             <p className="text-sm font-extrabold uppercase text-[#d8b7a7]">Scarlet Donovan / Sword and Flowers</p>
             <h1 className="mt-4 text-5xl font-semibold leading-tight text-[#fff8ef] md:text-7xl">{copy.hero}</h1>
             <p className="mt-6 max-w-3xl text-lg leading-8 text-[#e7d8cc]">{copy.intro}</p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a className="inline-flex rounded-lg bg-[#d8b7a7] px-5 py-3 font-bold text-[#262625]" href={trialApplicationHref} data-analytics-event="scarlet_trial_apply">AIテキスト鑑定 ￥0トライアル</a>
+              <a className="inline-flex rounded-lg border border-[#d8b7a7]/60 px-5 py-3 font-bold text-[#fff8ef]" href="/text-reading/">鑑定メニューを見る</a>
+            </div>
           </div>
           <aside className="relative overflow-hidden rounded-lg border border-[#c9b3a3] bg-[#fff8f0] p-6 text-[#2f2928] shadow-xl">
             <div className="absolute right-6 top-5 h-36 w-10 rounded-full border-l border-[#7f3440]/30" />
@@ -80,6 +87,10 @@ export default function Home() {
             <p className="text-sm font-extrabold uppercase text-[#7f3440]">Vow</p>
             <h2 className="mt-3 max-w-[20rem] text-3xl font-semibold">{copy.messageTitle}</h2>
             <p className="mt-4 max-w-[28rem] leading-8 text-[#685b55]">{copy.message}</p>
+            <div className="mt-5 rounded-lg border border-[#c9b3a3] bg-white/60 p-4">
+              <p className="text-sm font-extrabold text-[#7f3440]">Trial Reading</p>
+              <p className="mt-2 leading-7 text-[#685b55]">マヤ暦とインド占星術を中心に、相談内容を落ち着いて切り分けるAIテキスト鑑定を受付中です。</p>
+            </div>
           </aside>
         </div>
       </section>
