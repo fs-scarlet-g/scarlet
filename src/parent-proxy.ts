@@ -1,4 +1,4 @@
-const SCARLET_ORIGIN = "https://scarlet-guardian.fs-scarlet-g.workers.dev";
+const SCARLET_ORIGIN = "https://scarlet-oracle.fortune-kanri.workers.dev";
 
 export default {
   async fetch(request: Request): Promise<Response> {
